@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+const API = "http://localhost:5000";
 
 function App() {
   const [students, setStudents] = useState([]);
@@ -9,7 +10,7 @@ function App() {
 
   // Lấy danh sách sinh viên
   useEffect(() => {
-    fetch("/api/students")
+    fetch(`${API}/api/students`)
       .then((res) => res.json())
       .then((data) => setStudents(data))
       .catch((error) => console.error(error));
@@ -20,7 +21,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/students", {
+      const response = await fetch(`${API}/api/students`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -61,7 +62,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`/api/students/${student._id}`, {
+      const response = await fetch(`${API}/api/students/${student._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +104,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`/api/students/${student._id}`, {
+      const response = await fetch(`${API}/api/students/${student._id}`, {
         method: "DELETE",
       });
 
