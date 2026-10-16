@@ -1,0 +1,16 @@
+services:
+  backend:
+    image: vanhiep205/mern-backend:1.0
+    container_name: mern-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=${MONGO_URI}
+
+  frontend:
+    image: vanhiep205/mern-frontend:1.0
+    container_name: mern-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
